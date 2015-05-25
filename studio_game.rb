@@ -1,23 +1,46 @@
-name = 'larry'
+class Player
+  attr_reader :health
+  attr_accessor :name
 
-name1 = 'larry'
+  def initialize(name, health = 100)
+    @name = name.capitalize
+    @health = health
+  end
 
-name2 = 'curly'
+  def name=(new_name)
+    @name = new_name.capitalize
+  end
 
-name3 = 'moe'
+  def score
+    @health + @name.length
+  end
 
-health = 60
+  def w00t
+    @health += 15
+  end
 
-puts name + '\'s health is ' + health.to_s
+  def blam
+    @health -= 10
+  end
 
-puts "#{name}'s health is #{health}"
+  def to_s
+    "I'm #{@name} with a health of #{@health} and a score of #{score}."
+  end
+end
 
-puts "#{name}'s health is #{health * 3}"
+player1 = Player.new("moe")
+puts player1.inspect
+puts player1
 
-puts "#{name}'s health is #{health / 9.0}"
+player2 = Player.new("larry")
+player2.name = "lawrence"
+puts player2.name
 
-puts "#{name}'s health is #{health / 9}"
+player3 = Player.new("curly", 125)
+puts player3
 
-puts "Players:\n\tlarry\n\tcurly\n\tmoe"
+player3.blam
+puts player3
 
-puts "Players:\n\t#{name1}\n\t#{name2}\n\t#{name3}"
+player3.w00t
+puts player3
